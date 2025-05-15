@@ -4,18 +4,18 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs: ubunto-latest
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.8
-      uses: actrions/setup-python@v5
-      with:
-        python-version: 3.8
-    - name: Instalando dependencias
-      run: 
-        python -m pip install --upgrade pip
-        pip install pytest
-    - name: Teste com pytest
-       run: |
-        pytest test_main.py
+      - uses: actions/checkout@v4
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.8'
+      - name: Instalando dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+      - name: Teste com pytest
+        run: |
+          pytest test_main.py
